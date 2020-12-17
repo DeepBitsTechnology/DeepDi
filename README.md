@@ -32,6 +32,7 @@ Disassembly is the cornerstone of many cybersecurity solutions (vulnerability se
 
 
 
+Details can be found [here](https://blog.deepbitstech.com/2020/06/deepdisassembly-blazing-fast-and.html).
 
 
 # Usecases
