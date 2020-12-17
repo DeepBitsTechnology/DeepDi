@@ -144,7 +144,7 @@ class FileData(ctypes.Structure):
 
 class Library:
     def __init__(self):
-        lib = ctypes.cdll.LoadLibrary('Disassembler.dll')
+        lib = ctypes.cdll.LoadLibrary('DeepDi.dll')
 
         # DisassemblyResult::~DisassemblyResult
         self.DisassemblyResultDtor = lib['??1DisassemblyResult@dd@@QEAA@XZ']

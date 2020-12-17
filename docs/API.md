@@ -27,7 +27,7 @@ If `[start, end)` contains more than one section, only the first section is take
 
 ## Compilation
 
-To use DD APIs, include `dd.h` and link your program with `disassembler.lib`. For the demo version, only x64 version is provided.
+To use DD APIs, include `dd.h` and link your program with `DeepDi.lib`. For the demo version, only x64 version of DeepDi.dll is provided.
 
 ## Example Program
 The following program gives an basic idea of how to use DD APIs.
@@ -35,7 +35,7 @@ The following program gives an basic idea of how to use DD APIs.
 ```c++
 #include "dd.h"
 #include <windows.h>
-#pragma comment(lib, "disassembler.lib")
+#pragma comment(lib, "DeepDi.lib")
 
 int main(int argc, char* argv[])
 {
