@@ -41,7 +41,7 @@ The end point antivirus software usually uploads the suspicious samples back to 
 
 ## Use Case 2: Quick memory dump analysis for cloud Virtual Machines##
 
-The virtual machines on the clouds is potentially to be infected by various malware, e.g., cryptocurrency mining malware. With DeepDi, it is possible to identify those malware timely by scanning the memory dump of virtual machines.
+The virtual machines on the clouds are potentially to be infected by various malware, e.g., cryptocurrency mining malware. With DeepDi, it is possible to identify those malware timely by scanning the memory dump of virtual machines.
 
 # How to use DeepDi?
 
