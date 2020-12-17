@@ -21,8 +21,7 @@ Disassembly is the cornerstone of many cybersecurity solutions (vulnerability se
 
 | DeepDi | Memory | Operating System | Software |
 | --- | --- | --- | --- |
-| CPU Version | 200Mb+ | Win 7 +/ Ubuntu 16.04+ |
- |
+| CPU Version | 200Mb+ | Win 7 +/ Ubuntu 16.04+ | |
 | GPU Version | 200Mb+ |Win 7 +/ Ubuntu 16.04+ | Cuda 11 |
 
 # Performance
