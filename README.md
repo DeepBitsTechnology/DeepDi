@@ -55,15 +55,15 @@ please locate ./docs/API.md for details.
 
 ## IDA/BinaryNinja/Ghidra Plugins
 
-The plugins are open sourced and can be found at https://github.com/DeepBitsTechnology.
+The plugins are open sourced and can be found under folder ./plugins/
 
 ### IDA Plugin
 
-https://github.com/DeepBitsTechnology/DeepDiIDAPlugin
+./plugins/IDAPlugin/
 
 ### BinaryNinja Plugin
 
-Under development...
+./plugins/BinaryNinjaPlugin/
 
 ### Ghidra Plugin
 
