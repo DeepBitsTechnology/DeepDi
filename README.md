@@ -40,7 +40,7 @@ Details can be found [here](https://blog.deepbitstech.com/2020/06/deepdisassembl
 
 The end point antivirus software usually uploads the suspicious samples back to cloud server for further analysis. DeepDi can be used by end point antivirus software to analyze suspicious samples in real time. So that it can reduce the workload of cloud server and the response time to new threats.
 
-## Use Case 2: Quick memory dump analysis for cloud Virtual Machines##
+## Use Case 2: Quick memory dump analysis for cloud Virtual Machines
 
 The virtual machines on the clouds are potentially to be infected by various malware, e.g., cryptocurrency mining malware. With DeepDi, it is possible to identify those malware timely by scanning the memory dump of virtual machines.
 
