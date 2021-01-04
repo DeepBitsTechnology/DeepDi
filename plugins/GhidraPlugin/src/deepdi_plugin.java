@@ -9,6 +9,9 @@ import ghidra.program.model.util.CodeUnitInsertionException;
 
 import java.io.Closeable;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,6 +94,7 @@ public class deepdi_plugin extends GhidraScript {
 			public long address;
 
 			public Disassembly(Pointer p) {
+
 				super(p);
 				read();
 			}
@@ -124,6 +128,11 @@ public class deepdi_plugin extends GhidraScript {
 		@Structure.FieldOrder({"address"})
 		public static class Address extends Structure {
 			public long address;
+
+			public Address(Pointer p) {
+				super(p);
+				read();
+			}
 		}
 
 		@Structure.FieldOrder({"start", "end", "offset", "name", "writable", "executable"})
@@ -133,7 +142,7 @@ public class deepdi_plugin extends GhidraScript {
 			public long offset;
 			public Str name;
 			public boolean writable;
-			public boolean executable;
+			public char executable;
 
 			public Section(Pointer p) {
 				super(p);
@@ -156,8 +165,8 @@ public class deepdi_plugin extends GhidraScript {
 		public static class Operand extends Structure {
 			public OperandData data;
 			public int type;
-			public boolean read;
-			public boolean write;
+			public byte read;
+			public byte write;
 		}
 
 		@Structure.FieldOrder({"mnemonic", "operands", "length"})
@@ -165,6 +174,7 @@ public class deepdi_plugin extends GhidraScript {
 			public int mnemonic;
 			public Operand[] operands = new Operand[10];
 			public char length;
+
 		}
 
 		@Structure.FieldOrder({"myFirst", "myLast", "myEnd"})
@@ -210,9 +220,9 @@ public class deepdi_plugin extends GhidraScript {
 
 	public String binaryFile;
 
-	public int batchSize = 1024 * 256;
+	public static int batchSize = 1024 * 256;
 
-	public String key = "f9fa0f00e77e30915bd6d177155896130f97305e9f9c64fb7ee68acaf9291b6b";
+	public static String key = "";
 
 	protected void displayProgress(int i, int total, String str) {
 
@@ -223,9 +233,10 @@ public class deepdi_plugin extends GhidraScript {
 		ArrayList<Map<String, Long>> functions = new ArrayList<>();
 		try (var fileData = DDInterface.FileData.open(binaryFile)) {
 			for (var sec : fileData.sections.iter(DDInterface.Section.class)) {
-				if (!sec.executable) {
+				if (sec.executable == '0') {
 					continue;
 				}
+				println(sec.name.toString());
 
 				for (var addr = sec.start; addr < sec.end; addr += batchSize) {
 					var textResult = fileData.disassemble(addr, addr + batchSize, false);
@@ -241,9 +252,14 @@ public class deepdi_plugin extends GhidraScript {
 				}
 
 			}
-//			println("generated {} functions successfully!");
+			println("generated " + Integer.toString(functions.size()) + " functions successfully!");
 		} catch (Exception e) {
 			println("Function generation failed!");
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			println(sw.toString());
+//			e.printStackTrace();
 		}
 
 		return functions;
@@ -261,7 +277,7 @@ public class deepdi_plugin extends GhidraScript {
 			}
 
 			var addr = toAddr((Long) function.get("entry_point"));
-			createFunction(addr, "myname"); // TODO: 12/29/2020 no function name
+			createFunction(addr, "Deepdi_function_"+i); // TODO: 12/29/2020 no function name
 		}
 
 		println("Done.");
@@ -274,9 +290,10 @@ public class deepdi_plugin extends GhidraScript {
 		ArrayList<Long> addressList = new ArrayList<>();
 		try (var fileData = DDInterface.FileData.open(binaryFile)) {
 			for (var sec : fileData.sections.iter(DDInterface.Section.class)) {
-				if (!sec.executable) {
+				if ((sec.executable == '0')) {
 					continue;
 				}
+				println(sec.name.toString());
 
 				for (var addr = sec.start; addr < sec.end; addr += batchSize) {
 					var textResult = fileData.disassemble(addr, addr + batchSize, false);
@@ -289,8 +306,12 @@ public class deepdi_plugin extends GhidraScript {
 
 			}
 //			println("generated {} instructions successfully!".format(len(address_list)))
-		} catch (Exception exception) {
+		} catch (Exception e) {
 			println("Instructions generation failed!");
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
+			println(sw.toString());
 		}
 		return addressList;
 	}
@@ -299,7 +320,6 @@ public class deepdi_plugin extends GhidraScript {
 		var instructionSet = new InstructionSet(null);
 		var listing = currentProgram.getListing();
 		for (var address : addressList) {
-
 			instructionSet.addBlock(new InstructionBlock(toAddr(address)));
 		}
 		try {
