@@ -141,8 +141,8 @@ public class deepdi_plugin extends GhidraScript {
 			public long end;
 			public long offset;
 			public Str name;
-			public boolean writable;
-			public char executable;
+			public byte writable;
+			public byte executable;
 
 			public Section(Pointer p) {
 				super(p);
@@ -233,7 +233,7 @@ public class deepdi_plugin extends GhidraScript {
 		ArrayList<Map<String, Long>> functions = new ArrayList<>();
 		try (var fileData = DDInterface.FileData.open(binaryFile)) {
 			for (var sec : fileData.sections.iter(DDInterface.Section.class)) {
-				if (sec.executable == '0') {
+				if (sec.executable == 0) {
 					continue;
 				}
 				println(sec.name.toString());
@@ -277,7 +277,7 @@ public class deepdi_plugin extends GhidraScript {
 			}
 
 			var addr = toAddr((Long) function.get("entry_point"));
-			createFunction(addr, "Deepdi_function_"+i); // TODO: 12/29/2020 no function name
+			createFunction(addr, "Deepdi_function_" + i); // TODO: 12/29/2020 no function name
 		}
 
 		println("Done.");
@@ -290,7 +290,7 @@ public class deepdi_plugin extends GhidraScript {
 		ArrayList<Long> addressList = new ArrayList<>();
 		try (var fileData = DDInterface.FileData.open(binaryFile)) {
 			for (var sec : fileData.sections.iter(DDInterface.Section.class)) {
-				if ((sec.executable == '0')) {
+				if ((sec.executable == 0)) {
 					continue;
 				}
 				println(sec.name.toString());
