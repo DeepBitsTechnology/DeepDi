@@ -2,7 +2,7 @@ import ctypes
 import os
 
 dir = os.path.dirname(__file__)
-DLL_PATH = str(os.path.join(dir, 'Disassembler.dll'))
+DLL_PATH = str(os.path.join(dir, 'DeepDi.dll'))
 
 
 class Bxty(ctypes.Union):

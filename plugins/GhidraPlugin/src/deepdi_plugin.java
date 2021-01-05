@@ -222,7 +222,7 @@ public class deepdi_plugin extends GhidraScript {
 
 	public static int batchSize = 1024 * 256;
 
-	public static String key = "";
+	public static String key = "f9fa0f00e77e30915bd6d177155896130f97305e9f9c64fb7ee68acaf9291b6b";
 
 	protected void displayProgress(int i, int total, String str) {
 

@@ -106,3 +106,6 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
+
+# Exclude redundant dll
+plugins/IDAPlugin/src/python/deepdi_module/DeepDi.dll
