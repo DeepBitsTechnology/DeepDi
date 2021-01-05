@@ -61,24 +61,13 @@ The plugins are open sourced and can be found under folder ./plugins/
 
 ./plugins/IDAPlugin/
 
-#### Work with IDA pro
-
-* Copy `/lib/DeepDi.dll` to `/plugins/IDAPlugin/src/python/deepdi_module/`.
-* Edit `KEY` in `/plugins/IDAPlugin/src/plugins/deepdi_importer.py`. Note that it should be encoded as bytes. i.e `b'key'`.
-* Put the `/plugins/IDAPlugin/src/plugins/` and `/plugins/IDAPlugin/src/python/` folders under IDA's directory, and combine with the existing folders.
-* Open IDA pro and load a new file with Analysis disabled. ![ida_load](./examples/img/ida1.png )
-* Press `Ctrl-Alt-K` to start the plugin.  ![ida_start_plugin](./examples/img/ida2.png )
-* Choose the options you want.  
-![ida_options](./examples/img/ida3.png )
-
-
 ### BinaryNinja Plugin
 
 ./plugins/BinaryNinjaPlugin/
 
 ### Ghidra Plugin
 
-Under development...
+./plugins/GhidraPlugin
 
 # Contact Us
 
