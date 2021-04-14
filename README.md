@@ -46,29 +46,7 @@ The virtual machines on the clouds are potentially to be infected by various mal
 
 # How to use DeepDi?
 
-## Get a key from [DeepDi official site](https://www.deepbitstech.com/deepdi.html ).
-
-
-## API 
-
-please locate ./docs/API.md for details.
-
-## IDA/BinaryNinja/Ghidra Plugins
-
-The plugins are open sourced and can be found under folder ./plugins/
-
-### IDA Plugin
-
-./plugins/IDAPlugin/
-
-### BinaryNinja Plugin
-
-./plugins/BinaryNinjaPlugin/
-
-### Ghidra Plugin
-
-./plugins/GhidraPlugin
-
+Details can be found [here](https://deepbitstech.gitbook.io/deepdi/).
 # Contact Us
 
 If you have any questions, please reach us via https://www.deepbitstech.com/contact.html
