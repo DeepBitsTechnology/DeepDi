@@ -44,7 +44,7 @@ def get_pe_code(f):
         pe.close()
 
 
-def evaluate(batch_size=1024*1024):
+def evaluate(batch_size=1024*512):
     disasm = DeepDiCore.Disassembler('aaf9bb2902c6d7eeaf5a8c7156ab77113a9d02db46e33edaf5f66dc53f8c7caa5c0d35a18ee8197250c06cad37eca340a47d79dee0ed266355999ec358a040f1')
     for path in glob.glob(r'DATA_PATH\**\*.npy', recursive=True):
         parse_func = get_pe_code if path[-8] == '.' else get_elf_code
