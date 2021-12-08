@@ -18,6 +18,7 @@ Dependencies:
 - CUDA 11.1
 - MSVC runtime 2019 ([link](https://aka.ms/vs/16/release/vc_redist.x64.exe))
 - cuDNN v8.2.4 for CUDA 11.4
+- NumPy
 
 Please add `cudnn\bin` to `PATH` environment variable, or put cuDNN DLLs and DeepDi in the same folder. 
 
