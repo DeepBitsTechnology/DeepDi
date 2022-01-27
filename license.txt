@@ -1,22 +1,12 @@
 DeepDi Trial Period Software Demonstration License Agreement
 
-
-DeepDi.dll and DeepDi.lib are protected under The DeepDi Trial Period Software Demonstration License Agreement which can be found at https://www.deepbitstech.com/assets/files/demo_license.pdf.
-
-
+DeepDiCore.so is protected under The DeepDi Trial Period Software Demonstration License Agreement which can be found at https://deepbits.com/assets/files/communitylicense.pdf.
 
 During the development of DeepDi, we have used other open sourced projects with their own license.
 
-1) https://github.com/serge1/ELFIO
-
-
-MIT License: https://github.com/serge1/ELFIO/blob/master/COPYING
-
-
-2) https://github.com/microsoft/onnxruntime
-
+1) https://github.com/microsoft/onnxruntime
 
 MIT License: https://github.com/microsoft/onnxruntime/blob/master/LICENSE
 
 
-All other code excpet DeepDi.dll and DeepDi.lib are protected by MIT license.
+All other code except DeepDiCore.so is protected by MIT license.
