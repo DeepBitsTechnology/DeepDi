@@ -2,7 +2,7 @@
 
 Disassembly is the cornerstone of many cybersecurity solutions (vulnerability search, malware classification, etc.). Deepbits leverages the recent advance in deep learning to develop **DeepDi** , a fast and accurate disassembler. It is comparable or superior to the state-of-the-art disassemblers in terms of accuracy, and is robust against unseen compilers and platforms, obfuscated binaries, and adversarial attacks. Its CPU version is two times faster than IDA Pro, and its GPU version is over 300 times faster.
 
-This is a community edition free for non-commercial use only. 
+This is a community edition free for non-commercial use only. An online disassembler powered by DeepDi can be found at https://deepdi.deepbits.com/.
 
 ## PUBLICATIONS
 [**USENIX Security'22**] Sheng Yu, Yu Qu, Xunchao Hu, and Heng Yin, [DeepDi: Learning a Relational Graph Convolutional Network Model on Instructions for Fast and Accurate Disassembly](https://www.cs.ucr.edu/~heng/pubs/DeepDi.pdf), to appear in the 31st USENIX Security Symposium, August 2022.
