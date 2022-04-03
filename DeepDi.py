@@ -42,6 +42,12 @@ def _get_elf_code(path):
         machine = elf['e_machine']
         assert machine == 'EM_386' or machine == 'EM_X86_64'
 
+        image_base = 0
+        for segment in elf.iter_segments():
+            if segment['p_type'] == 'PT_LOAD':
+                image_base = segment['p_paddr']
+                break
+
         code_data = []
         code_addr = []
         for section in elf.iter_sections():
@@ -50,7 +56,7 @@ def _get_elf_code(path):
 
             if section['sh_flags'] & SH_FLAGS.SHF_EXECINSTR:
                 code_data.append(section.data())
-                code_addr.append((section['sh_addr'], len(code_data[-1])))
+                code_addr.append((section['sh_addr'] - image_base, len(code_data[-1])))
         return b''.join(code_data), code_addr, is_x64
 
 
@@ -65,13 +71,12 @@ def _get_pe_code(path):
                 raise RuntimeError('.net files are not supported')
 
         x86 = pe.FILE_HEADER.IMAGE_FILE_32BIT_MACHINE
-        image_base = pe.OPTIONAL_HEADER.ImageBase
         for section in pe.sections:
             if not section.IMAGE_SCN_MEM_EXECUTE:
                 continue
             sec_data = section.get_data()
             code_data.append(sec_data)
-            sec_addr = section.VirtualAddress + image_base
+            sec_addr = section.VirtualAddress
             code_addr.append((sec_addr, len(sec_data)))
         return b''.join(code_data), code_addr, not x86
     finally:
@@ -79,18 +84,11 @@ def _get_pe_code(path):
 
 
 def example(key, gpu, path):
-    deepdi = DeepDi(key, gpu, 1024 * 1024)
-    for inst_addr, func_addr in deepdi.disassemble(path):
-        s = np.array2string(
-            func_addr,
-            np.inf,
-            separator='\n',
-            prefix='',
-            suffix='',
-            formatter={'int': hex},
-            threshold=np.inf
-        )
-        print(s[1:-1])
+    deepdi = DeepDi(key, gpu, 1024 * 512)
+    with open(f'{path}_inst.txt', 'w') as f_inst, open(f'{path}_func.txt', 'w') as f_func:
+        for inst_addr, func_addr in deepdi.disassemble(path):
+            np.savetxt(f_inst, inst_addr, '%x')
+            np.savetxt(f_func, func_addr, '%x')
 
 
 def main():
