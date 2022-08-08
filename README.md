@@ -31,5 +31,9 @@ The core functionalities are provided via `DeepDiCore.so`. See [API.md](API.md) 
 
 We also provide `DeepDi.py`, an example wrapper of the low-level APIs to extract inputs for DeepDi and return instruction and function virtual addresses. 
 
+
+## Used by
+* [DeepDiWeb](https://github.com/DeepBitsTechnology/deepdiweb)
+
 ## Contact Us
 If you have any questions, please create an issue or reach us via https://www.deepbits.com/contact.html.
