@@ -25,7 +25,7 @@ This is a community edition free for non-commercial use only. An online disassem
 2. Clone the master branch
 3. Run `docker build -t DeepDi .` (or `docker build -t DeepDi -f Dockerfile-gpu .` for GPU support).
 4. Run `docker run --rm -it DeepDi`. Add `--gpus all` to the docker command line if you intend to use GPU.
-5. Usage: `python3 DeepDi.py --key KEY [--gpu] --path PATH`. You can obtain a key for free at https://www.deepbits.com/deepdi.html.
+5. Usage: `python3 DeepDi.py --key KEY [--gpu] --path PATH`. You can obtain a key for free at https://www.deepbits.com/deepdi.
 
 The core functionalities are provided via `DeepDiCore.so`. See [API.md](API.md) for the low-level APIs.
 
@@ -36,4 +36,4 @@ We also provide `DeepDi.py`, an example wrapper of the low-level APIs to extract
 * [DeepDiWeb](https://github.com/DeepBitsTechnology/deepdiweb)
 
 ## Contact Us
-If you have any questions, please create an issue or reach us via https://www.deepbits.com/contact.html.
+If you have any questions, please create an issue or reach us via https://www.deepbits.com/about#contact-us.
